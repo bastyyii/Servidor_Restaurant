@@ -19,7 +19,7 @@ exports.createBranch = async (req, res) => {
         const branch = new ModelBranch(req.body);
         await branch.save();
 
-        const countAllBranch = await ModelBranch.count();
+        const countAllBranch = await ModelBranch.count({restaurant : checkRestaurant._id});
 
         checkRestaurant.branch = countAllBranch;
         await checkRestaurant.save();
